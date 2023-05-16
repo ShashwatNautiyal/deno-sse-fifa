@@ -4,12 +4,11 @@ import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 const app = new Application();
 const router = new Router();
 
-const SCORE = {
-  argentina: 0,
-  brazil: 0,
-};
-
 router.get("/sse", (ctx) => {
+  const SCORE = {
+    argentina: 0,
+    brazil: 0,
+  };
   const target = ctx.sendEvents();
   setInterval(() => {
     const random = Math.ceil(Math.random() * 1000);
@@ -25,7 +24,7 @@ router.get("/sse", (ctx) => {
       brazil: SCORE.brazil,
     });
 
-    if (SCORE.argentina === 20 || SCORE.brazil === 20) {
+    if (SCORE.argentina === 5 || SCORE.brazil === 5) {
       SCORE.argentina = 0;
       SCORE.brazil = 0;
     }
