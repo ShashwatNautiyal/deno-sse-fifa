@@ -24,7 +24,12 @@ router.get("/sse", (ctx) => {
       argentina: SCORE.argentina,
       brazil: SCORE.brazil,
     });
-  }, 1000);
+
+    if (SCORE.argentina === 20 || SCORE.brazil === 20) {
+      SCORE.argentina = 0;
+      SCORE.brazil = 0;
+    }
+  }, 2000);
 });
 
 app.use(oakCors({ origin: "*" }));
